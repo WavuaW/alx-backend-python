@@ -1,25 +1,18 @@
 #!/usr/bin/env python3
-"""Augment the following code with the correct duck-typed annotations:
+'''Task 11: More involved type annotations
+'''
+from typing import Any, Mapping, Union, TypeVar
 
-# The types of the elements of the input are not know
-def safe_first_element(lst):
-    if lst:
-        return lst[0]
+
+T = TypeVar('T')
+Res = Union[Any, T]
+Def = Union[T, None]
+
+
+def safely_get_value(dct: Mapping, key: Any, default: Def = None) -> Res:
+    #Retrieves a value from a dict using a given key.
+    if key in dct:
+        return dct[key]
     else:
-        return None
-
-{'lst': typing.Sequence[typing.Any], 'return': \
-    typing.Union[typing.Any, NoneType]}
-"""
-
-
-import typing
-
-
-def safe_first_element(lst: typing.Sequence[typing.Any]) -> \
-        typing.Union[typing.Any, None]:
-    """Duck-typed annotation"""
-    if lst:
-        return lst[0]
-    else:
-        return None
+        return default
+     
