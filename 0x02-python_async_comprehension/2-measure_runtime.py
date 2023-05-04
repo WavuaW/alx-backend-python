@@ -13,5 +13,10 @@ async def measure_runtime() -> float:
     total execution time.
     '''
     start_time = time.time()
+    '''asyncio.gather(): This function is used to concurrently
+    run multiple coroutines in an event loop. It takes in one
+    or more awaitable objects, and returns a coroutine
+    that waits for all of them to complete.
+    '''
     await asyncio.gather(*(async_comprehension() for _ in range(4)))
     return time.time() - start_time
