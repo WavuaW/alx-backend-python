@@ -17,6 +17,8 @@ async def measure_runtime() -> float:
     run multiple coroutines in an event loop. It takes in one
     or more awaitable objects, and returns a coroutine
     that waits for all of them to complete.
+    The * operator is used to unpack the resulting generator expression
+    as separate arguments to the asyncio.gather() function.
     '''
     await asyncio.gather(*(async_comprehension() for _ in range(4)))
     return time.time() - start_time
